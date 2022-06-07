@@ -10,13 +10,17 @@ const ExpenseItem = (props) => {
   };
 
   return (
-    <li className="list-group-item d-flex justify-content-between align-items-center">
+    <li className="list-group-item flex justify-content-between items-center justify-center align-items-center">
       {props.name}
-      <div>
-        <span className="badge badge-primary badge-pill mr-3">
+      <div className="flex">
+        <span className="badge badge-primary badge-pill flex mr-3 items-center justify-center align-items-center">
           ₼{props.cost}
         </span>
-        <TiDelete size="1.5em" onClick={handleDeleteExpense} />
+        <TiDelete
+          size="1.5em"
+          onClick={handleDeleteExpense}
+          className="hover:cursor-pointer"
+        />
       </div>
     </li>
   );

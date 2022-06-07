@@ -9,18 +9,20 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/expenses", (req, res) => {
-  database.query("SELECT * FROM expenses"),
-    (err, result) => {
-      if (err) throw err;
-      res.send(result);
-    };
+  database.query("SELECT * FROM expenses", (err, row) => {
+      if (err) {
+          res.status(500).send(`Throw err` + err)
+      }
+    res.json(row);
+  });
 });
 
 app.post("/addexpense", (req, res) => {
+  const id = req.body.id;
   const name = req.body.name;
   const cost = req.body.cost;
-  const addExpense = "INSERT INTO expenses (name,cost) VALUES (?,?);";
-  database.query(addExpense, [name, cost], (err, result) => {
+  const addExpense = "INSERT INTO expenses (id,name,cost) VALUES (?,?,?);";
+  database.query(addExpense, [id, name, cost], (err, result) => {
     if (err) throw err;
     res.send(result);
     console.log("added");

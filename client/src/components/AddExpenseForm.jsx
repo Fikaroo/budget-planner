@@ -10,6 +10,10 @@ const AddExpenseForm = () => {
   const [name, setName] = useState("");
   const [cost, setCost] = useState("");
 
+//   useEffect(() => {
+//     dispatch(getExpenses());
+//   }, [dispatch, name, cost]);
+
   const onSubmit = (e) => {
     e.preventDefault();
     const expense = {
@@ -24,6 +28,15 @@ const AddExpenseForm = () => {
     setCost("");
   };
 
+  const handleInput = (e) => {
+    const value = e.target.value;
+    if (isNaN(value)) {
+      setCost(0);
+    } else {
+      setCost(parseInt(value));
+    }
+  };
+
   return (
     <form onSubmit={onSubmit}>
       <div className="row">
@@ -34,6 +47,7 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="name"
+            autocomplete="off"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -42,17 +56,18 @@ const AddExpenseForm = () => {
           <label htmlFor="cost">Cost</label>
           <input
             required="required"
-            type="number"
+            type="text"
             className="form-control"
             id="cost"
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
+            autocomplete="off"
+            value={isNaN(cost) ? "" : cost}
+            onChange={handleInput}
           />
         </div>
       </div>
       <div className="row mt-3">
         <div className="col-sm">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary bg-blue-500">
             Save
           </button>
         </div>

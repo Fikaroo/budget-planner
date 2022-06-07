@@ -4,7 +4,7 @@ const ViewBudget = (props) => {
       <span>Budget: ₼{props.budget}</span>
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary bg-blue-500"
         onClick={props.handleEditClick}
       >
         Edit

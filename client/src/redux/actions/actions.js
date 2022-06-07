@@ -1,8 +1,18 @@
-import axios from "axios";
-import { ADD_EXPENSE, DELETE_EXPENSE, SET_BUDGET } from "./actions-type";
-import { baseUrl } from "../constant";
+// import axios from "axios";
+import {
+  ADD_EXPENSE,
+  ADD_EXPENSES,
+  DELETE_EXPENSE,
+  SET_BUDGET,
+} from "./actions-type";
+// import { baseUrl } from "../constant";
 export const addExpense = (payload) => ({
   type: ADD_EXPENSE,
+  payload,
+});
+
+export const addExpenses = (payload) => ({
+  type: ADD_EXPENSES,
   payload,
 });
 
@@ -16,9 +26,24 @@ export const setBudget = (payload) => ({
   payload,
 });
 
-export const postExpense = () => {
-  return async (dispatch) => {
-    const res = axios.post(`${baseUrl} + addexpense`);
-    console.log(res);
-  };
-};
+// export const postExpense = (expense) => {
+//   return async (dispatch) => {
+//     const id = expense.id;
+//     const name = expense.name;
+//     const cost = expense.cost;
+//     await axios.post(`${baseUrl}/addexpense`, {
+//       id: id,
+//       name: name,
+//       cost: cost,
+//     });
+//     dispatch(addExpense(expense));
+//   };
+// };
+
+// export const getExpenses = () => {
+//   return async (dispatch) => {
+//     const res = await axios.get(`${baseUrl}/expenses`);
+//     const data = await res.data;
+//     dispatch(addExpenses(data));
+//   };
+// };
