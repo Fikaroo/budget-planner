@@ -10,19 +10,19 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/expenses", (req, res) => {
   database.query("SELECT * FROM expenses", (err, row) => {
-      if (err) {
-          res.status(500).send(`Throw err` + err)
-      }
+    if (err) {
+      res.status(500).send(`Throw err` + err);
+    }
     res.json(row);
   });
 });
 
 app.post("/addexpense", (req, res) => {
-  const id = req.body.id;
+  const key = req.body.key;
   const name = req.body.name;
   const cost = req.body.cost;
-  const addExpense = "INSERT INTO expenses (id,name,cost) VALUES (?,?,?);";
-  database.query(addExpense, [id, name, cost], (err, result) => {
+  const addExpense = "INSERT INTO expenses (`key`,`name`,cost) VALUES (?,?,?);";
+  database.query(addExpense, [key, name, cost], (err, result) => {
     if (err) throw err;
     res.send(result);
     console.log("added");
@@ -31,7 +31,7 @@ app.post("/addexpense", (req, res) => {
 
 app.post("/addbudget", (req, res) => {
   const budget = req.body.budget;
-  const addExpense = "INSERT INTO budget (budget) VALUES ?;";
+  const addExpense = "UPDATE budget SET budget=?;";
   database.query(addExpense, budget, (err, result) => {
     if (err) throw err;
     res.send(result);
@@ -39,7 +39,16 @@ app.post("/addbudget", (req, res) => {
   });
 });
 
-app.delete("/delexpense/:id", (req, res) => {
+app.get("/budget", (req, res) => {
+  database.query("SELECT * FROM budget", (err, row) => {
+    if (err) {
+      res.status(500).send(`Throw err` + err);
+    }
+    res.json(row);
+  });
+});
+
+app.delete("/deleteexpense/:id", (req, res) => {
   const id = req.params.id;
   const deleteExpense = "DELETE FROM expenses WHERE id = ?";
   database.query(deleteExpense, id, (err, result) => {
