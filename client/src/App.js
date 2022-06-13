@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import MainPage from "./pages/MainPage/MainPage";
 
 const App = () => {

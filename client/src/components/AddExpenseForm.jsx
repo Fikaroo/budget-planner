@@ -40,38 +40,34 @@ const AddExpenseForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="row">
-        <div className="col-sm col-lg-4">
-          <label htmlFor="name">Name</label>
+      <div className="form-control space-y-3">
+        <label className="input-group input-group-vertical">
+          <span className="bg-neutral">Name</span>
           <input
             required="required"
             type="text"
-            className="form-control"
-            id="name"
-            autoComplete="off"
+            placeholder="Expenses name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="input input-bordered focus:outline-none"
           />
-        </div>
-        <div className="col-sm col-lg-4">
-          <label htmlFor="cost">Cost</label>
+        </label>
+        <label className="input-group input-group-horizontal">
+          <span className="bg-neutral">₼</span>
           <input
             required="required"
             type="text"
-            className="form-control"
-            id="cost"
-            autoComplete="off"
+            className="input input-bordered focus:outline-none w-full"
+            id="name"
             value={isNaN(cost) ? "" : cost}
             onChange={handleInput}
           />
-        </div>
+        </label>
       </div>
-      <div className="row mt-3">
-        <div className="col-sm">
-          <button type="submit" className="btn btn-primary bg-blue-500">
-            Save
-          </button>
-        </div>
+      <div className="flex w-full justify-center mt-2">
+        <button type="submit" className="btn btn-accent btn-wide">
+          Save
+        </button>
       </div>
     </form>
   );

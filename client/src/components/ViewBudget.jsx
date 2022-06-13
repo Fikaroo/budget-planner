@@ -4,21 +4,23 @@ import { getBudget } from "../redux/actions/actions";
 const ViewBudget = (props) => {
   const budget = useSelector((state) => state.reducer.budget);
   const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getBudget())
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(getBudget());
+  }, [dispatch]);
 
-  console.log(budget);
   return (
     <>
-      <span>Budget: ₼{budget}</span>
-      <button
-        type="button"
-        className="btn btn-primary bg-blue-500"
-        onClick={props.handleEditClick}
-      >
-        Edit
-      </button>
+      <div className="flex items-center justify-between">
+        <div className="stat-value">₼{budget}</div>
+        <div className="stat-actions m-0">
+          <button
+            className="btn btn-sm btn-success"
+            onClick={props.handleEditClick}
+          >
+            Edit
+          </button>
+        </div>
+      </div>
     </>
   );
 };

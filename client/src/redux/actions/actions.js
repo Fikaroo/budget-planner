@@ -2,10 +2,13 @@ import axios from "axios";
 import {
   ADD_EXPENSE,
   ADD_EXPENSES,
+  ADD_REMAINING,
+  ADD_TOTAL_EXPENSE,
   DELETE_EXPENSE,
   SET_BUDGET,
 } from "./actions-type";
 import { baseUrl } from "../constant";
+
 export const addExpense = (payload) => ({
   type: ADD_EXPENSE,
   payload,
@@ -13,6 +16,16 @@ export const addExpense = (payload) => ({
 
 export const addExpenses = (payload) => ({
   type: ADD_EXPENSES,
+  payload,
+});
+
+export const addTotalExpense = (payload) => ({
+  type: ADD_TOTAL_EXPENSE,
+  payload,
+});
+
+export const addRemaining = (payload) => ({
+  type: ADD_REMAINING,
   payload,
 });
 
@@ -54,6 +67,7 @@ export const postExpense = (expense) => {
       cost: cost,
     });
     dispatch(addExpense(expense));
+    dispatch(getExpenses());
   };
 };
 

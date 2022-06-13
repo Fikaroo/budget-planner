@@ -20,16 +20,36 @@ const ExpenseList = () => {
 
   return (
     <>
-      <input
-        type="text"
-        className="form-control mt-2 mb-2 mr-sm-2"
-        placeholder="Type to search..."
-        onChange={handleChange}
-      />
-      <ul className="list-group mt-3 mb-3">
+      <div className="form-control">
+        <div className="input-group justify-center">
+          <input
+            type="text"
+            placeholder="Search…"
+            className="input input-bordered focus:outline-none w-full max-w-md"
+            onChange={handleChange}
+          />
+          <button className="btn btn-square">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul className="mt-3 space-y-3 flex flex-col h-72 overflow-auto">
         {filteredExpenses.map((expense) => (
           <ExpenseItem
-            key={expense.id}
+            key={expense.key}
             id={expense.id}
             name={expense.name}
             cost={expense.cost}

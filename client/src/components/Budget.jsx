@@ -1,8 +1,8 @@
-import  { useState } from "react";
+import { useState } from "react";
 import ViewBudget from "./ViewBudget";
 import EditBudget from "./EditBudget";
 import { useSelector, useDispatch } from "react-redux";
-import { postBudget, setBudget } from "../redux/actions/actions";
+import { postBudget } from "../redux/actions/actions";
 
 const Budget = () => {
   const budget = useSelector((state) => state.reducer.budget);
@@ -19,7 +19,8 @@ const Budget = () => {
   };
 
   return (
-    <div className="alert alert-secondary p-3 d-flex align-items-center justify-content-between">
+    <div className="stat">
+      <div className="stat-title">Budget</div>
       {isEditing ? (
         <EditBudget handleSaveClick={handleSaveClick} budget={budget} />
       ) : (
