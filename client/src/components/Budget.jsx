@@ -2,7 +2,7 @@ import  { useState } from "react";
 import ViewBudget from "./ViewBudget";
 import EditBudget from "./EditBudget";
 import { useSelector, useDispatch } from "react-redux";
-import { setBudget } from "../redux/actions/actions";
+import { postBudget, setBudget } from "../redux/actions/actions";
 
 const Budget = () => {
   const budget = useSelector((state) => state.reducer.budget);
@@ -14,7 +14,7 @@ const Budget = () => {
   };
 
   const handleSaveClick = (value) => {
-    dispatch(setBudget(value));
+    dispatch(postBudget(value));
     setIsEditing(false);
   };
 

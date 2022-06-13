@@ -1,12 +1,12 @@
 import { TiDelete } from "react-icons/ti";
 import { useDispatch } from "react-redux";
-import { deleteExpense } from "../redux/actions/actions";
+import { deleteExpenseApi } from "../redux/actions/actions";
 
 const ExpenseItem = (props) => {
   const dispatch = useDispatch();
 
   const handleDeleteExpense = () => {
-    dispatch(deleteExpense(props.id));
+    dispatch(deleteExpenseApi(props.id));
   };
 
   return (

@@ -10,7 +10,6 @@ const reducer = (state = initialState, { type, payload }) => {
     case ADD_EXPENSE:
       return { ...state, expenses: [...state.expenses, payload] };
     case ADD_EXPENSES:
-      console.log(payload);
       return { ...state, expenses: payload };
     case DELETE_EXPENSE:
       return { ...state, expenses: state.expenses.filter((expense) => expense.id !== payload) };

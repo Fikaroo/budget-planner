@@ -4,7 +4,7 @@ const ExpenseTotal = () => {
   const expenses = useSelector((state) => state.reducer.expenses);
 
   const total = expenses.reduce((total, item) => {
-    return (total += item.cost);
+    return (total += parseInt(item.cost));
   }, 0);
 
   return (

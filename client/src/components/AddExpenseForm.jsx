@@ -2,7 +2,8 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 
-import { addExpense } from "../redux/actions/actions";
+import { getExpenses, postExpense } from "../redux/actions/actions";
+import { useEffect } from "react";
 
 const AddExpenseForm = () => {
   const dispatch = useDispatch();
@@ -10,19 +11,19 @@ const AddExpenseForm = () => {
   const [name, setName] = useState("");
   const [cost, setCost] = useState("");
 
-//   useEffect(() => {
-//     dispatch(getExpenses());
-//   }, [dispatch, name, cost]);
+  useEffect(() => {
+    dispatch(getExpenses());
+  }, [dispatch, name, cost]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     const expense = {
-      id: uuidv4(),
+      key: uuidv4(),
       name,
       cost: parseInt(cost),
     };
 
-    dispatch(addExpense(expense));
+    dispatch(postExpense(expense));
 
     setName("");
     setCost("");
@@ -47,7 +48,7 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="name"
-            autocomplete="off"
+            autoComplete="off"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -59,7 +60,7 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="cost"
-            autocomplete="off"
+            autoComplete="off"
             value={isNaN(cost) ? "" : cost}
             onChange={handleInput}
           />
