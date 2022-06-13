@@ -1,4 +1,4 @@
-# React Budget Tracker
+# Budget Planner
 
 To run:
 
