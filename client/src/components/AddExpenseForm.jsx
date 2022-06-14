@@ -41,23 +41,23 @@ const AddExpenseForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <div className="form-control space-y-3">
-        <label className="input-group input-group-vertical">
-          <span className="bg-neutral">Name</span>
+        <label className="input-group input-group-vertical md:w-full w-[220px]">
+          <span className="bg-neutral text-sm md:text-base">Name</span>
           <input
             required="required"
             type="text"
             placeholder="Expenses name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="input input-bordered focus:outline-none"
+            className="input input-bordered focus:outline-none input-sm md:input-md"
           />
         </label>
-        <label className="input-group input-group-horizontal">
+        <label className="input-group input-group-horizontal ">
           <span className="bg-neutral">₼</span>
           <input
             required="required"
             type="text"
-            className="input input-bordered focus:outline-none w-full"
+            className="input input-bordered focus:outline-none input-sm md:input-md w-44 md:w-full"
             id="name"
             value={isNaN(cost) ? "" : cost}
             onChange={handleInput}
