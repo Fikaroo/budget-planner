@@ -34,8 +34,8 @@ function MainPage() {
                 </div>
               </div>
             </div>
-            <div className="grid flex-col card bg-base-300 rounded-box">
-              <div className="flex flex-col px-4 pt-4">
+            <div className="grid flex-col card bg-base-300 pb-4 md:pb-0 rounded-box mt-4 md:mt-0">
+              <div className="flex flex-col px-4 pt-2">
                 <Dashboard />
               </div>
             </div>

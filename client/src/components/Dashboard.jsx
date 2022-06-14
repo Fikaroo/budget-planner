@@ -11,11 +11,11 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex justify-between px-5">
+      <div className="flex justify-between sm:px-16 md:px-4">
         <div className="flex flex-col justify-center items-center">
           <span>Remaining</span>
           <div
-            className="radial-progress bg-primary text-primary-content border-4 border-primary"
+            className="radial-progress bg-primary text-primary-content border-[14px] sm:border-[32px] md:border-8 border-primary"
             style={styleR}
           >
             {perRemainig > 0 ? perRemainig : 0}%
@@ -24,7 +24,7 @@ const Dashboard = () => {
         <div className="flex flex-col justify-center items-center">
           <span>Expenses</span>
           <div
-            className="radial-progress bg-primary text-primary-content border-4 border-primary"
+            className="radial-progress bg-primary text-primary-content border-[14px] sm:border-[32px] md:border-8 border-primary"
             style={styleE}
           >
             {perExpenses < 100  ? perExpenses : 0}%
