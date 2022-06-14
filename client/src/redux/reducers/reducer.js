@@ -15,7 +15,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
-  console.log(type, payload);
   switch (type) {
     case ADD_EXPENSE:
       return { ...state, expenses: [...state.expenses, payload] };

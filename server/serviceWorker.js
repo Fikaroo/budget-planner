@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 const database = require("./sqlConnection");
 const port = 3001;
-
+let insert = false;
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -31,7 +31,14 @@ app.post("/addexpense", (req, res) => {
 
 app.post("/addbudget", (req, res) => {
   const budget = req.body.budget;
-  const addExpense = "UPDATE budget SET budget=?;";
+  let addExpense;
+  if (!insert) {
+    addExpense = "INSERT INTO budgets (budget) VALUES (?)";
+    insert = true;
+  } else {
+    addExpense = "UPDATE budgets SET budget=?;";
+  }
+
   database.query(addExpense, budget, (err, result) => {
     if (err) throw err;
     res.send(result);
@@ -40,7 +47,7 @@ app.post("/addbudget", (req, res) => {
 });
 
 app.get("/budget", (req, res) => {
-  database.query("SELECT * FROM budget", (err, row) => {
+  database.query("SELECT * FROM budgets", (err, row) => {
     if (err) {
       res.status(500).send(`Throw err` + err);
     }
