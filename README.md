@@ -4,11 +4,13 @@ To run:
 
 ```
 Clinet
-npm install 
+npm install
 npm start 
 ```
 ```
+##connet db config/config.json
 Server
 npm install 
+npm run build
 npm start
 ```
