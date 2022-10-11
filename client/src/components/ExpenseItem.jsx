@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
-import { deleteExpenseApi } from "../redux/actions/actions";
+// import { deleteExpenseApi } from "../redux/actions/actions";
+import { deleteExpense } from "../redux/actions/actions";
 
 const ExpenseItem = (props) => {
   const dispatch = useDispatch();
 
   const handleDeleteExpense = () => {
-    dispatch(deleteExpenseApi(props.id));
+    dispatch(deleteExpense(props.id));
   };
 
   return (

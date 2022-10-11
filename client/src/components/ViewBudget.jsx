@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getBudget } from "../redux/actions/actions";
+// import { getBudget } from "../redux/actions/actions";
+// import { getBudget } from "../redux/actions/actions";
 const ViewBudget = (props) => {
   const budget = useSelector((state) => state.reducer.budget);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getBudget());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getBudget());
+  // }, [dispatch]);
 
   return (
     <>

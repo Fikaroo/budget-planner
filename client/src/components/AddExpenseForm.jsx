@@ -2,7 +2,8 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 
-import { getExpenses, postExpense } from "../redux/actions/actions";
+// import { getExpenses, postExpense } from "../redux/actions/actions";
+import { addExpense } from "../redux/actions/actions";
 import { useEffect } from "react";
 
 const AddExpenseForm = () => {
@@ -11,9 +12,9 @@ const AddExpenseForm = () => {
   const [name, setName] = useState("");
   const [cost, setCost] = useState("");
 
-  useEffect(() => {
-    dispatch(getExpenses());
-  }, [dispatch, name, cost]);
+  // useEffect(() => {
+  //   dispatch(getExpenses());
+  // }, [dispatch, name, cost]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +24,8 @@ const AddExpenseForm = () => {
       cost: parseInt(cost),
     };
 
-    dispatch(postExpense(expense));
+    // dispatch(postExpense(expense));
+    dispatch(addExpense(expense));
 
     setName("");
     setCost("");
